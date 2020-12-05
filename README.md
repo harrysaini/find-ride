@@ -25,6 +25,7 @@
 ###  Update API
 
 **Endpoint** - `/api/update`
+
 **Request**
 ```javascript
 {
@@ -59,11 +60,14 @@ curl --location --request PUT 'http://localhost:3000/api/update' \
 ###  Nearby Drivers API
 
 **Endpoint** - `/api/nearby`
+
 **Request**
 `http://localhost:3000/api/nearby?lat=28.4594&long=77.0266&radius=2000000`
+
 radius is optional request param
 
-**response **
+
+**response**
 
 ``` javascript
 {
@@ -104,6 +108,13 @@ radius is optional request param
         }
     ]
 }
+```
+
+**Curl**
+
+```
+curl --location --request GET 'http://localhost:3000/api/nearby?lat=28.4594&long=77.0266&radius=10' \
+
 ```
 
 
