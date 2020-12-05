@@ -62,7 +62,7 @@ curl --location --request PUT 'http://localhost:3000/api/update' \
 **Endpoint** - `/api/nearby`
 
 **Request**
-`http://localhost:3000/api/nearby?lat=28.4594&long=77.0266&radius=2000000`
+`http://localhost:3000/api/nearby?lat=28.4594&long=77.0266&radius=10`
 
 radius is optional request param
 
