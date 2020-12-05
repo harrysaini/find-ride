@@ -12,15 +12,15 @@ const initSQLFilePath = path.resolve(__dirname, './../../sql/createTables.sql');
 
 export const initTables = async (connection: Connection) => {
   const initTablesSQLFile = readFileSync(initSQLFilePath, 'utf-8');
-  const [rows, fields] = await connection.query(initTablesSQLFile);
+  await connection.query(initTablesSQLFile);
 
-  console.log(rows, fields);
+  console.log("CREATED TABLES .....");
 };
 
 
 const insertDrivers = async (drivers: Driver[]) => {
 
-  for(let chnk of chunk(drivers, 10)){
+  for (let chnk of chunk(drivers, 10)) {
     const promises = chnk.map(driver => {
       return insertDriver(driver);
     })
@@ -32,7 +32,7 @@ const insertDrivers = async (drivers: Driver[]) => {
 }
 
 const insertDriverLocations = async (driverLocations: DriverLocation[]) => {
-  for(let chnk of chunk(driverLocations, 10)){
+  for (let chnk of chunk(driverLocations, 10)) {
 
     const promises = chnk.map(driverLocation => {
       return insertDriverLocation(driverLocation)
@@ -54,9 +54,9 @@ export const seedDatabase = async () => {
 
     await insertDrivers(drivers)
     await insertDriverLocations(driverLocations)
-  } catch(err) {
-    console.log(err)
-    console.log("FAILED TO SEED ROWS")
+  } catch (err) {
+    console.error(err)
+    console.error("FAILED TO SEED ROWS")
     console.log("WILL continue ...... to serve requests ....... \n ........ \n .........")
   }
 }

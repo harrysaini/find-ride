@@ -2,7 +2,6 @@ import DatabaseConnection from "../mysqlConn";
 import { Driver } from "../types";
 
 
-
 export const insertDriver = async (driver: Driver) => {
   try {
     const {
@@ -24,20 +23,11 @@ export const insertDriver = async (driver: Driver) => {
 
     const pool = await DatabaseConnection.getConnectionPool()
 
-    const [result] = await pool.execute(query, values)
+    await pool.execute(query, values)
 
-    console.log(result)
-  } catch(err) {
-    console.log("Failed to insert")
-    console.log(driver)
+  } catch (err) {
+    console.error("Failed to insert")
+    console.debug(driver)
     throw err
   }
-}
-
-
-export const selectAll = async () => {
-  const query = 'SELECT * FROM `drivers`;'
-
-  const pool = await DatabaseConnection.getConnectionPool()
-
 }

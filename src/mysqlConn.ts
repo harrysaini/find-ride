@@ -9,16 +9,13 @@ const creds: ConnectionOptions = {
   user: db.username,
   database: db.database,
   password: db.password,
-//   debug: true
+  //   debug: true
 }
 
 class DatabaseConnection {
   private static setupConnection: Connection;
   private static pool: Pool;
 
-  /**
-   * Get database config connection
-   */
   static async getSetupConnection() {
     const connection = this.setupConnection || await createConnection({
       ...creds,
@@ -31,14 +28,12 @@ class DatabaseConnection {
 
 
   static async checkConnection(connection: Connection) {
-      const [rows] = await connection.query('SELECT 1 + 1;');
-      console.log(rows);
-      console.log("Connected successfully");
+    const [rows] = await connection.query('SELECT 1 + 1;');
+    console.log(rows);
+    console.log("Connected successfully");
   }
 
-  /**
-   * Get connection pool
-   */
+
   static async getConnectionPool() {
     const pool = this.pool || await createPool({
       ...creds,

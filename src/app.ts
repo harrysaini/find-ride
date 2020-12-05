@@ -1,5 +1,5 @@
 import express, { Router, Request, Response } from 'express';
-import { getNearbyDrivers, updateLocation } from './controller';
+import { getNearbyDriversReqHandler, updateLocationReqHandler } from './controller';
 
 
 const app: express.Application = express();
@@ -21,9 +21,8 @@ router.get('/', (req: Request, res: Response) => {
 // setup api router
 const apiRouter = Router()
 
-//apiRouter.use('/question', questionRouter)
-apiRouter.use('/update', updateLocation);
-apiRouter.use('/nearby', getNearbyDrivers);
+apiRouter.put('/update', updateLocationReqHandler);
+apiRouter.get('/nearby', getNearbyDriversReqHandler);
 
 router.use('/api', apiRouter)
 
