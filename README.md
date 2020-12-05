@@ -168,6 +168,7 @@ mysql> desc driver_locations;
  - Filter out points with distance greater
 
 
-# Imporvements
+# Improvements
+ - tables can be more normalised, like vehicle table can be seperate
  - Update can be done via websockets
  - Optimise location finding query using better tech maybe GIS
